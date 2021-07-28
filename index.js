@@ -68,6 +68,8 @@ var paths = {
   win32: getChromeExe("Chrome"),
 };
 
-var chromePath = paths.linux || paths.darwin || paths.win32;
+function getGoogleChromePath() { 
+  return paths.linux || paths.darwin || paths.win32;
+}
 
-module.exports = chromePath;
+module.exports = getGoogleChromePath;
