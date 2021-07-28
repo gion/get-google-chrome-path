@@ -4,5 +4,24 @@
   "version": "1.0.0",
   "dependencies": {
     "which": "^2.0.2"
-  }
+  },
+  "description": "A simple script that retrieves the path of the google chrome browser (if installed), no matter the OS",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gion/get-google-chrome-path.git"
+  },
+  "keywords": [
+    "google",
+    "chrome",
+    "path"
+  ],
+  "author": "Gion <bogdan.gradinariu@gmail.com> (https://github.com/gion)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gion/get-google-chrome-path/issues"
+  },
+  "homepage": "https://github.com/gion/get-google-chrome-path#readme"
 }
