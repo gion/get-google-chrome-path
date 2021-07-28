@@ -1,0 +1,7 @@
+{
+  "name": "get-google-chrome-path",
+  "version": "1.0.0",
+  "dependencies": {
+    "which": "^2.0.2"
+  }
+}
