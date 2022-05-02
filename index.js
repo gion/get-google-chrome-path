@@ -67,4 +67,4 @@ function getGoogleChromePath() {
   return paths.linux || paths.darwin || paths.win32;
 }
 
-module.exports = getGoogleChromePath;
+module.exports.getGoogleChromePath = getGoogleChromePath;
