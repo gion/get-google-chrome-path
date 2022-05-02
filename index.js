@@ -38,6 +38,7 @@ function getBin(commands) {
     if (which.sync(commands[i])) {
       return which.sync(commands[i], {nothrow: true})
     }
+  }
 }
 
 function getChromeDarwin(defaultPath) {
