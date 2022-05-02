@@ -34,16 +34,10 @@ function getBin(commands) {
   if (process.platform !== "linux") {
     return null;
   }
-  var bin, i;
-  for (i = 0; i < commands.length; i++) {
-    try {
-      if (which.sync(commands[i])) {
-        bin = commands[i];
-        break;
-      }
-    } catch (e) {}
-  }
-  return bin;
+  for (let i = 0; i < commands.length; i++) {
+    if (which.sync(commands[i])) {
+      return which.sync(commands[i], {nothrow: true})
+    }
 }
 
 function getChromeDarwin(defaultPath) {
