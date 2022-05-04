@@ -34,16 +34,11 @@ function getBin(commands) {
   if (process.platform !== "linux") {
     return null;
   }
-  var bin, i;
-  for (i = 0; i < commands.length; i++) {
-    try {
-      if (which.sync(commands[i])) {
-        bin = commands[i];
-        break;
-      }
-    } catch (e) {}
+  for (let i = 0; i < commands.length; i++) {
+    if (which.sync(commands[i])) {
+      return which.sync(commands[i], {nothrow: true})
+    }
   }
-  return bin;
 }
 
 function getChromeDarwin(defaultPath) {
@@ -72,4 +67,4 @@ function getGoogleChromePath() {
   return paths.linux || paths.darwin || paths.win32;
 }
 
-module.exports = getGoogleChromePath;
+module.exports.getGoogleChromePath = getGoogleChromePath;
