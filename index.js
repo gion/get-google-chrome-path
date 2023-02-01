@@ -26,7 +26,7 @@ function getChromeExe(chromeDirName) {
     } catch (e) {}
   }
 
-  return windowsChromeDirectory;
+  return null;
 }
 
 function getBin(commands) {
@@ -51,7 +51,12 @@ function getChromeDarwin(defaultPath) {
     fs.accessSync(homePath);
     return homePath;
   } catch (e) {
-    return defaultPath;
+    try {
+      fs.accessSync(defaultPath);
+      return defaultPath;
+    } catch (err) {
+        return null;
+    }
   }
 }
 
