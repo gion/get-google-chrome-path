@@ -26,7 +26,7 @@ function getChromeExe(chromeDirName) {
     } catch (e) {}
   }
 
-  return windowsChromeDirectory;
+  return null;
 }
 
 function getBin(commands) {
@@ -34,16 +34,11 @@ function getBin(commands) {
   if (process.platform !== "linux") {
     return null;
   }
-  var bin, i;
-  for (i = 0; i < commands.length; i++) {
-    try {
-      if (which.sync(commands[i])) {
-        bin = commands[i];
-        break;
-      }
-    } catch (e) {}
+  for (let i = 0; i < commands.length; i++) {
+    if (which.sync(commands[i])) {
+      return which.sync(commands[i], {nothrow: true})
+    }
   }
-  return bin;
 }
 
 function getChromeDarwin(defaultPath) {
@@ -56,7 +51,12 @@ function getChromeDarwin(defaultPath) {
     fs.accessSync(homePath);
     return homePath;
   } catch (e) {
-    return defaultPath;
+    try {
+      fs.accessSync(defaultPath);
+      return defaultPath;
+    } catch (err) {
+        return null;
+    }
   }
 }
 
@@ -72,4 +72,4 @@ function getGoogleChromePath() {
   return paths.linux || paths.darwin || paths.win32;
 }
 
-module.exports = getGoogleChromePath;
+module.exports.getGoogleChromePath = getGoogleChromePath;
